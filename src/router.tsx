@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 
 import Home from "pages/Home";
 import IntersectionObserverExample from "pages/IntersectionObserverExample";
+import PaginationExample from "pages/PaginationExample";
 import NotFound from "pages/NotFound";
 
 export const routerLinks = [
@@ -12,6 +13,10 @@ export const routerLinks = [
   {
     path: "/intersection-observer",
     element: <IntersectionObserverExample />,
+  },
+  {
+    path: "/pagination",
+    element: <PaginationExample />,
   },
   {
     path: "*",
