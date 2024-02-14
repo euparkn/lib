@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import reportWebVitals from "reportWebVitals";
+import { RecoilRoot } from "recoil";
 
 import "assets/styles/reset.css";
 
@@ -11,7 +11,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
   </React.StrictMode>
 );
-reportWebVitals();
