@@ -4,6 +4,7 @@ import Home from "pages/Home";
 import IntersectionObserverExample from "pages/IntersectionObserverExample";
 import PaginationExample from "pages/PaginationExample";
 import NotFound from "pages/NotFound";
+import CustomConfirmExample from "pages/CustomConfirmExample";
 
 export const routerLinks = [
   {
@@ -17,6 +18,10 @@ export const routerLinks = [
   {
     path: "/pagination",
     element: <PaginationExample />,
+  },
+  {
+    path: "/custom-confirm",
+    element: <CustomConfirmExample />,
   },
   {
     path: "*",
