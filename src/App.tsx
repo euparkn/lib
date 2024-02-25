@@ -1,7 +1,8 @@
 import { RouterProvider } from "react-router-dom";
 import styled from "styled-components";
-
 import { router, routerLinks } from "router";
+
+import CustomConfirm from "components/customConfirm/CustomConfirm";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <main>
         <RouterProvider router={router} />
       </main>
+      <CustomConfirm />
     </div>
   );
 }
