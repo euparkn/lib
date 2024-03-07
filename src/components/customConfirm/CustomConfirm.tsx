@@ -31,10 +31,7 @@ const Bg = styled.div`
   height: 100%;
   position: fixed;
   z-index: 9999;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  inset: 0 0 0 0;
   display: flex;
   justify-content: center;
   align-items: center;
