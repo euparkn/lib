@@ -1,13 +1,19 @@
-import Pagination from "components/pagination/Pagination";
 import { useState } from "react";
 import styled from "styled-components";
+
+import Pagination from "components/pagination/Pagination";
 
 function PaginationExample() {
   const [offset, setOffset] = useState(1);
   return (
     <Container>
       <h1>{offset}</h1>
-      <Pagination totalPages={15} offset={offset} setOffset={setOffset} />
+      <Pagination
+        totalPages={15}
+        offset={offset}
+        setOffset={setOffset}
+        count={5}
+      />
     </Container>
   );
 }

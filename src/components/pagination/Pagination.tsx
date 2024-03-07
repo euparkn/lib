@@ -1,22 +1,14 @@
-import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-function Pagination({
-  totalPages,
-  offset,
-  setOffset,
-}: {
-  totalPages: number;
-  offset: number;
-  setOffset: (offset: number) => void;
-}) {
-  const count = 5;
-  const [start, setStart] = useState(1);
-  const [end, setEnd] = useState(1);
+import { usePaganation } from "components/pagination/hooks/usePagination";
 
-  useEffect(() => {
-    setEnd(start + count - 1);
-  }, [start]);
+function Pagination({ totalPages, offset, setOffset, count }: IPagination) {
+  const { start, end, toPrev, toNext, toStart, toEnd } = usePaganation({
+    totalPages,
+    offset,
+    setOffset,
+    count,
+  });
 
   const pageNumbers = () => {
     const arr = [];
@@ -40,58 +32,21 @@ function Pagination({
   return (
     <Container>
       <Block>
-        {start > count && (
-          <button type="button" onClick={() => setStart(1)}>
-            &lt;&lt;
-          </button>
-        )}
-        {start > count && (
-          <button
-            type="button"
-            onClick={() => setStart((prev) => prev - count)}
-          >
-            &lt;
-          </button>
-        )}
+        <button type="button" onClick={toStart} disabled={start <= count}>
+          &lt;&lt;
+        </button>
+        <button type="button" onClick={toPrev} disabled={start === 1}>
+          &lt;
+        </button>
       </Block>
+      <Block>{pageNumbers()}</Block>
       <Block>
-        {pageNumbers()}
-        {/* {end < totalPages && (
-          <>
-            <p>...</p>
-            <button
-              type="button"
-              onClick={() => setOffset(totalPages)}
-              className={offset === totalPages ? "active" : ""}
-            >
-              {totalPages}
-            </button>
-          </>
-        )} */}
-      </Block>
-      <Block>
-        {end < totalPages && (
-          <button
-            type="button"
-            onClick={() => setStart((prev) => prev + count)}
-          >
-            &gt;
-          </button>
-        )}
-        {end < totalPages && (
-          <button
-            type="button"
-            onClick={() =>
-              setStart(
-                totalPages % count === 0
-                  ? totalPages - count + 1
-                  : totalPages - (totalPages % count) + 1
-              )
-            }
-          >
-            &gt;&gt;
-          </button>
-        )}
+        <button type="button" onClick={toNext} disabled={end >= totalPages}>
+          &gt;
+        </button>
+        <button type="button" onClick={toEnd} disabled={end >= totalPages}>
+          &gt;&gt;
+        </button>
       </Block>
     </Container>
   );
@@ -108,6 +63,10 @@ const Block = styled.div`
     &.active {
       font-weight: 700;
       text-decoration: underline;
+    }
+    &:disabled {
+      cursor: default;
+      opacity: 0.3;
     }
   }
 `;
