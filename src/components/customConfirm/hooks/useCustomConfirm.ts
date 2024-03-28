@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 
 import {
@@ -32,19 +31,13 @@ export const useCustomConfirm = () => {
 
     try {
       await promise;
-      init();
       return true;
     } catch (e) {
-      init();
       return false;
+    } finally {
+      init();
     }
   };
-
-  useEffect(() => {
-    return () => {
-      if (customConfirmState.cancelAction) customConfirmState.cancelAction();
-    };
-  }, [customConfirmState]);
 
   return {
     ...customConfirmState,

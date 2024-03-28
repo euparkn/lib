@@ -12,13 +12,13 @@ function CustomConfirm() {
     <Bg>
       <Modal>
         <h1>{title}</h1>
-        <strong>{text}</strong>
+        <p>{text}</p>
         <div>
-          <button type="button" onClick={confirmAction}>
-            OK
-          </button>
           <button type="button" onClick={cancelAction}>
             Cancel
+          </button>
+          <button type="button" onClick={confirmAction}>
+            OK
           </button>
         </div>
       </Modal>
@@ -39,24 +39,29 @@ const Bg = styled.div`
 `;
 
 const Modal = styled.div`
-  padding: 32px;
+  min-width: 240px;
+  padding: 24px;
   box-sizing: border-box;
   background-color: #fff;
   text-align: center;
+  border-radius: 8px;
   h1 {
     line-height: 2rem;
     color: #777;
+    font-size: 1.3rem;
+    margin-bottom: 8px;
   }
   > div {
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: 12px;
     margin-top: 16px;
     button {
       cursor: pointer;
-      border: 1px solid #aaa;
       border-radius: 4px;
-      padding: 4px 8px;
+      padding: 8px 16px;
+      background-color: #eee;
+      font-weight: 700;
     }
   }
 `;
